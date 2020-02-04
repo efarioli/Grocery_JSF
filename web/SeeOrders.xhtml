@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <head>
+        <title>All Products</title>
+    </head>
+    <body>
+
+
+        <ui:composition template="/template/common/commonLayout.xhtml">
+
+            <ui:define name="content">
+                <h3>My Orders</h3>
+
+                <h:form>
+                    <h:dataTable class="centered striped" value="#{orderBean.orderTotals}" var="ord" >
+                        <h:column>
+                            <f:facet name="header">Order No</f:facet>
+                            <h:outputText value="#{ord.order.orderID}" />
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Date</f:facet>
+                            <h:outputText value="#{ord.order.dateTr}" converter="dateTimeConverter">
+
+
+                            </h:outputText>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Total</f:facet>
+                            <h:outputText value="#{ord.total}" >
+                                <f:convertNumber type="currency"/>
+
+                            </h:outputText>
+                        </h:column>
+                        
+                        <h:column >
+                            <f:facet name="header"></f:facet>
+
+                                    <h:commandLink action="#{orderDetailBEan.webOrderDetail(ord.order)}" value="See Order Detail"
+                                                   id="buttoncheck" class="btn-small waves-effect waves-light right blue accent-1" type="submit"> 
+
+                                    </h:commandLink>
+                        </h:column>
+
+
+                    </h:dataTable>
+
+
+
+                </h:form>
+                
+            </ui:define>
+
+            
+
+        </ui:composition>
+
+
+    </body>
+</html>

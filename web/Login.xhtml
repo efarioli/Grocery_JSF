@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <head>
+        <title>All Products</title>
+    </head>
+    <body>
+        <ui:composition template="/template/common/commonLayout.xhtml">
+
+            <ui:define name="content">
+                <div class="row">
+                    <div class="input-field col s8 offset-s2">
+                        <h3 class="left">Login</h3>
+                    </div>
+                </div>
+                <h:form id="login">
+
+
+
+                    <div class="row">
+                        <div class="input-field col s8 offset-s2">
+                            <h:outputLabel for="username" value="Username : " />
+                            <h:inputText id="username" value="#{userBean.username}" required="true"
+                                         requiredMessage="Please enter username" 
+                                         />
+                            <h:message for="username" class="errormessagebb animated lightSpeedOut" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s8 offset-s2">
+                            <h:outputLabel for="password" value="Password : " />
+
+                            <h:inputSecret id="password" value="#{userBean.password}" required="true"
+                                           requiredMessage="Please enter password">
+
+                            </h:inputSecret>
+                            <h:message for="password" class="errormessagebb animated lightSpeedOut" />
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="row">
+                        <div class="input-field col s8 offset-s2">
+
+                            <h:commandLink action="#{userBean.checkCredentials()}" value="Login" 
+                                           id="buttoncheck" class="btn-large waves-effect waves-light right" type="submit"> 
+
+                            </h:commandLink>
+
+                            <h:link value="Register" outcome="Register" class="waves-effect waves-light btn-large blue accent-1"/>
+                        </div>
+                    </div>
+                    <h:message for="buttoncheck"  class="messagecenter"/>
+
+
+                </h:form>
+
+
+
+            </ui:define>
+
+
+
+        </ui:composition>
+
+
+
+
+    </body>
+</html>

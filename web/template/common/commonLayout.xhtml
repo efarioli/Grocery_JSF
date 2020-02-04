@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+
+    <h:head>
+       <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>-->
+        <link rel="stylesheet" href="resources/css/materialize.min.css"/>
+       
+        <!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>-->
+        <link href="resources/css/icon.css" rel="stylesheet"/>
+        
+        <!--<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" rel="stylesheet"/>-->
+        <link href="resources/css/animate.min.css" rel="stylesheet"/>
+        
+        
+        <h:outputStylesheet name="common-style.css" library="css" />
+
+        <h:outputStylesheet name="common-style.css" library="css" />
+    </h:head>
+
+    <h:body>
+
+        <div id="page" class="container">
+            <nav>
+                
+            
+            <div id="header" class="nav-wrapper">
+                <ui:insert name="header" >
+                    <ui:include src="/template/common/userHeader.xhtml" />
+                </ui:insert>
+            </div>
+                </nav>
+
+            <div id="content" class="container">
+                <ui:insert name="content" >
+                    <ui:include src="/template/common/commonContent.xhtml" />
+                </ui:insert>
+            </div>
+
+            <div id="footer">
+                <ui:insert name="footer" class="footer-copyright">
+                    <ui:include src="/template/common/commonFooter.xhtml" />
+                </ui:insert>
+            </div>
+
+        </div>
+
+    </h:body>
+
+</html>

@@ -1,0 +1,186 @@
+*{
+    box-sizing: border-box;
+}
+#page{
+    width: 800px;
+    margin: 0 auto;
+}
+
+#header{
+    width: 100%;
+    height:100px;
+    /*border: 1px solid #000;*/
+    margin-bottom:16px;
+}
+
+#content{
+    width: 100%;
+    min-height:500px;
+    margin-right:16px;
+    margin-bottom:16px;
+    /*border: 1px solid #000;*/
+    padding: 15px;
+}
+
+#footer{
+    width: 100%;
+    height:100px;
+    /*border: 1px solid #000;*/
+}
+.icon {
+    width: 60px;
+    height: inherit;
+
+}
+img {
+    height: 100px;
+    width: 100px;
+}
+td img {
+    max-width:200px;
+    height:auto;
+}
+#content {
+    min-height: 650px;
+}
+
+
+.errormessagebb {
+    color:  #E2686D;
+    font-weight: bold;
+
+}
+i > input {
+color: white;
+}
+h3 {
+    color: #2BBBAD;
+}
+
+
+div > div.card-action {
+    text-align: center;
+}
+h4 {
+    text-align: center;
+    z-index: -1000;
+}
+div.card-image > img {
+    height: 100%;
+    width: auto;
+}
+
+
+span.numshop {
+    font-size: 2em;
+    padding: 12px;
+}
+
+
+tr > td.fornumber  {
+    text-align: right;
+}
+.fornumber {
+    text-align: right;
+}
+th {
+    text-align: right;
+}
+th:first-child {
+    text-align: left;
+}
+#header > a:nth-child(1) {
+    padding-left: 5px;
+}
+.fornumber2 {
+    text-align: center;
+}
+td:nth-child(4) > a {
+    margin-left: 30px;
+}
+div.infomessage {
+    padding: 15px 0;
+}
+.messagecenter {
+    color: blue;
+    display: block;
+        text-align: center;
+
+}
+li.red2 {
+    margin: 0 0 0 12px;
+    padding: 0 12px;
+}
+div.card-content > span {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 5px;
+    font-size: 3em;
+    color: #2BBBAD;
+}
+ul.left > li > i {
+        font-size: 3em;
+
+}
+
+#nav-mobile > li:nth-child(1) > a > i{
+    height: 100%;
+    
+}
+body{
+    /*background-image: url(https://images.template.net/wp-content/uploads/2017/01/14180026/Web-Background-Pattern.jpg);*/
+       background-image: url(https://www.toptal.com/designers/subtlepatterns/patterns/spikes.png);
+
+}
+#content{
+        background: white;
+}
+.card.small {
+    height: 360px;
+}
+
+div.card-image {
+    /*border-radius: 0 60% 0 15%;*/
+}
+div > div.card-image > span.card-title.right {
+    position: absolute;
+    top:  0px;
+    /*margin-left: 110px;*/
+   color:  #2BBBAD;
+   padding: 0;
+   font-weight: bold;
+   text-align: right;
+   /*border: 1px solid black;*/
+   
+   background-color: white;
+	margin-left: 160px;
+	opacity: 70%;
+	border-radius: 0 0 0 35%;
+        width: 70px;
+	height: 50px;
+	margin-left: 70%;
+}
+div.card-image > span {
+	background-color: white;
+	margin-left: 160px;
+	opacity: 70%;
+	border-radius: 0 0 0 35%;
+        width: 70px;
+	height: 50px;
+	margin-left: 70%;
+}
+div.card-content > span {
+    background-color: white;
+    opacity: 80%;
+    padding: 5px 5px 15px 15px;
+    border-radius: 0 0 0 25%;
+    
+}
+
+ li > a > i.btn-floating {
+    font-size: 3em;
+}
+.errormessagebb.animated {
+    animation-duration: 4s;
+}

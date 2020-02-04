@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Add Product</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/template/common/adminLayout.xhtml">
+
+            <ui:define name="content">
+                <div class="row">
+                    <div class="col l12 offset-l3">
+                        <h3>Edit price</h3>
+                        <h:form id="editprice">
+                            <h:inputHidden value="#{editProductBean.product.id}"></h:inputHidden>
+                            <div class="row">
+                                <div class="col s12 m6 l6">
+                                    <div class="card large">
+                                        <div class="card-image">
+                                            <img src="#{editProductBean.product.imgURL}"/>
+
+                                            <!--<span class="card-title right"></span>-->
+                                        </div>
+                                        <div class="card-content">
+                                            <p>#{editProductBean.product.description}</p>
+                                            <h4>#{pr.price}</h4>
+
+                                        </div>
+                                        <div class="card-action">
+
+
+
+                                            <div class="row">
+
+                                                <div class="input-field col s4 m4 l4">
+                                                    <h:outputLabel for="price" value="Price:" />
+                                                    <h:inputText id="price" value="#{editProductBean.product.price}" 
+                                                                 required="true"
+                                                                 requiredMessage="Please enter the price" 
+                                                                 validatorMessage="The number must be at least 0.01 and not not exceed 9999"
+                                                                 converterMessage="Must be a number that can have decimals and it has to be between 0.01 and 9999. Ex: 1.25">
+                                                        <f:convertNumber integerOnly="false" ></f:convertNumber>
+
+                                                        <f:validateDoubleRange minimum="0.01" maximum="9999" />
+                                                    </h:inputText>
+                                                </div>
+
+                                                <div class="col s4 m4 l4">
+
+                                                    <h:commandLink action="#{editProductBean.updateProduct()}" 
+                                                                   class="btn-small waves-effect waves-light right orange accent-3" 
+                                                                   value="Update">
+
+                                                    </h:commandLink>
+                                                </div>
+                                                <div class="col s4 m4 l4">
+
+                                                    <h:link  outcome="ViewAllProducts.xhtml" 
+                                                             class="btn-small waves-effect waves-light right" 
+                                                             value="Cancel">
+
+                                                    </h:link>
+                                                </div>
+                                                <h:message for="price" class="errormessagebb animated lightSpeedOut" />
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <h:message for="EditPriceGroupPanel" style="color:red;" />
+
+
+
+                        </h:form>
+
+                    </div>
+
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+
+
+
+    </h:body>
+</html>
+

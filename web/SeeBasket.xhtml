@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <head>
+        <title>All Products</title>
+    </head>
+    <body>
+
+        <ui:composition template="/template/common/commonLayout.xhtml">
+
+            <ui:define name="content">
+                <h3>Basket</h3>
+
+                <h:form>
+                    <h:dataTable value="#{shoppingCart.productsSC}" var="scpr" >
+                        <h:column>
+                            <f:facet name="header">Description</f:facet>
+                            <h:outputText value="#{scpr.product.description}" />
+                        </h:column>
+                        <h:column>
+                            <h:commandLink action="#{shoppingCart.decreaseProductQty(scpr.product)}"
+                                           class="btn-floating btn-medium waves-effect waves-light left" >
+                                <i class="material-icons">keyboard_arrow_down</i>
+                            </h:commandLink>
+                        </h:column>
+                        <h:column class="fornumber2">
+                            <f:facet name="header">Qty</f:facet>
+                            <h:outputText value="#{scpr.qty}">
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <h:commandLink action="#{shoppingCart.increaseProductQty(scpr.product)}"
+                                           class="btn-floating btn-medium waves-effect waves-light left" >
+                                <i class="material-icons">keyboard_arrow_up</i>
+                            </h:commandLink>
+
+                        </h:column>
+                        <h:column>
+                            <h:commandLink action="#{shoppingCart.removeOrderItem(scpr)}"
+                                           class="btn-floating btn-medium waves-effect waves-light left red darken-4" >
+                                <i class="material-icons">delete</i>
+                            </h:commandLink>
+                        </h:column>
+
+
+                        <h:column class="fornumber">
+                            <f:facet name="header">Price</f:facet>
+                            <h:outputText value="#{scpr.product.price}" >
+                                <f:convertNumber type="currency"/>
+
+                            </h:outputText>
+                        </h:column>
+                        <h:column class="fornumber">
+                            <f:facet name="header">Subtotal</f:facet>
+                            <h:outputText value="#{scpr.product.price * scpr.qty }" style="text-align: right">
+                                <f:convertNumber type="currency"  />
+
+                            </h:outputText>
+                        </h:column>
+
+
+                    </h:dataTable>
+                    <p class="fornumber">Total:  <h:outputText value="#{shoppingCart.total}" >
+                            <f:convertNumber type="currency"  />
+
+                        </h:outputText></p>
+
+                    <h:commandLink value="Get more products" action="index.xhtml" class="waves-effect waves-light btn blue accent-1" > 
+                    </h:commandLink>
+                    <h:commandLink value="Clear Basket" action="#{shoppingCart.clearBasket()}" class="waves-effect waves-light btn red darken-4" > 
+                    </h:commandLink>
+
+                    <h:commandLink value="Complete the purchase" action="Buy.xhtml?faces-redirect=true" class="btn waves-effect waves-light right" > 
+                    </h:commandLink>
+                    
+                     <h:link outcome="Login.xhtml"  rendered="#{shoppingCart.user==null}">
+                        Login
+                    </h:link>
+
+                </h:form>
+
+            </ui:define>
+
+
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Increase Product Stock in Store</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/template/common/adminLayout.xhtml">
+
+            <ui:define name="content">
+                <h3>Increase Product Stock in Store</h3>
+                <h:form>
+                    <h:inputHidden value="#{stockBean.productObj.id}" 
+                                   />
+
+
+
+
+
+                    <h:inputHidden value="#{editProductBean.product.id}"></h:inputHidden>
+                    <div class="row">
+                        <div class="col s12 m6 l6">
+                            <div class="card large">
+                                <div class="card-image">
+                                    <img src="#{stockBean.productObj.imgURL}"/>
+
+                                    <!--<span class="card-title right"></span>-->
+                                </div>
+                                <div class="card-content">
+                                    <p>#{stockBean.productObj.description}</p>
+                                    <h:outputText value="#{stockBean.productObj.price}" class="card-title right">
+                                        <f:convertNumber type="currency"/>
+
+                                    </h:outputText>
+
+                                </div>
+                                <div class="card-action">
+
+
+                                    <div class="row">
+                                        <p>#{stockBean.productObj.description}</p>
+                                        <p>Quantity in stock:
+                                            <h:outputText value="#{stockBean.getStockinStore(adminBean.st.storeID, stockBean.productObj.id)}" 
+                                                          />
+                                        </p>
+                                    </div>
+
+                                    <div class="row">
+
+                                        <div class="input-field col s6 m6 l6">
+                                            <h:outputLabel for="qty" value="Quantity to add:" />
+                                            <h:inputText id="qty" value="#{stockBean.qty}" 
+                                                         required="true"
+                                                         requiredMessage="Please enter the quantity" 
+                                                         validatorMessage="The integer number must be at least 1 and not exceed 9999"
+                                                         converterMessage="Must be an integer between 1 and 9999 inclusive">
+                                                <f:convertNumber integerOnly="true"></f:convertNumber>
+                                                <f:validateDoubleRange minimum="1"  maximum="9999"/>
+                                            </h:inputText>
+                                            <h:message for="qty" class="errormessagebb animated lightSpeedOut" />
+                                        </div>
+
+
+
+                                        <div class="col s3 m3 l3">
+
+                                            <h:commandLink value="Add" action="#{stockBean.updateQtyInStore(adminBean.st.storeID, stockBean.productObj.id , stockBean.qty)}"
+                                                           class="btn-small waves-effect waves-light right orange accent-3" 
+                                                           >
+
+                                            </h:commandLink>
+                                        </div>
+                                        <div class="col s3 m3 l3">
+
+                                            <h:link  outcome="ViewAllProducts.xhtml" 
+                                                     class="btn-small waves-effect waves-light right" 
+                                                     value="Cancel">
+
+                                            </h:link>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <h:message for="EditPriceGroupPanel" style="color:red;" />
+
+                </h:form>
+            </ui:define>
+
+
+
+        </ui:composition>
+
+    </h:body>
+</html>
+

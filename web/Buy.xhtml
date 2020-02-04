@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <head>
+        <title>All Products</title>
+    </head>
+    <body>
+        <ui:composition template="/template/common/commonLayout.xhtml">
+
+            <ui:define name="content">
+                <div class="row">
+                    <div class="input-field col s10 offset-s1">
+                        <h3>Order</h3>
+                    </div>
+                </div>
+
+                <h:form>
+                    <h:dataTable class="striped" value="#{shoppingCart.productsSC}" var="scpr" >
+                        <h:column>
+                            <f:facet name="header">Description</f:facet>
+                            <h:outputText value="#{scpr.product.description}" />
+                        </h:column>
+
+                        <h:column class="fornumber">
+                            <f:facet name="header" class="fornumber">Qty</f:facet>
+                            <h:outputText value="#{scpr.qty}">
+                            </h:outputText>
+                        </h:column>
+
+                        <h:column class="fornumber">
+                            <f:facet name="header">Price</f:facet>
+                            <h:outputText value="#{scpr.product.price}" >
+                                <f:convertNumber type="currency"/>
+
+                            </h:outputText>
+                        </h:column>
+                        <h:column class="fornumber">
+                            <f:facet name="header">Subtotal</f:facet>
+                            <h:outputText value="#{scpr.product.price * scpr.qty }" style="text-align: right">
+                                <f:convertNumber type="currency"  />
+
+                            </h:outputText>
+                        </h:column>
+
+
+                    </h:dataTable>
+                    <div class="row">
+                        <div class="input-field col s10 offset-s1">
+                            <div class="fornumber">Total: <h:outputText value="#{shoppingCart.total}"><f:convertNumber type="currency"  /></h:outputText></div>
+
+                            <div class="infomessage">
+                                <h:outputText value="To complete the order, please hit the BUY button"
+                                              rendered="#{shoppingCart.user!=null}">
+
+                                </h:outputText>
+                                <h:outputText value="To complete the order, please Login or Register"
+                                              rendered="#{shoppingCart.user==null}">
+
+                                </h:outputText>
+
+                            </div>
+
+                            <h:commandLink value="BUY" action="#{shoppingCart.buy()}"  rendered="#{shoppingCart.user!=null}"
+                                           class="btn-large waves-effect waves-light right" type="submit">                                         
+                            </h:commandLink>
+
+                            <h:commandLink value="Login" action="Login.xhtml?faces-redirect=true"  rendered="#{shoppingCart.user==null}"
+                                           class="btn-large waves-effect waves-light right" type="submit">                                         
+                            </h:commandLink>
+
+                            <h:commandLink value="Register" action="Register.xhtml?faces-redirect=true"  rendered="#{shoppingCart.user==null}"
+                                           class="btn-large waves-effect waves-light  blue accent-1" type="submit">                                         
+                            </h:commandLink>
+                        </div>
+                    </div>
+
+
+                </h:form>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <head>
+        <title>All Products</title>
+    </head>
+    <body>
+        <ui:composition template="/template/common/adminLayout.xhtml">
+
+            <ui:define name="content">
+                <h3>Products in Stock</h3>
+                    
+                <p>All Products in Stock for Store: &quot;#{adminBean.st.storeName}&quot;</p>
+
+                <h:form>
+                    <h:dataTable value="#{productBean.products}" var="pr" class="striped">
+                        <h:column>
+                            <f:facet name="header">ID</f:facet>
+                            <h:outputText value="#{pr.id}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Description</f:facet>
+                            <h:outputText value="#{pr.description}" />
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Img URL</f:facet>
+                            <h:outputText value="#{pr.trimString(pr.imgURL, 20)}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Price</f:facet>
+                            <h:outputText value="#{pr.price}" >
+                                <f:convertNumber type="currency"/>
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Stock</f:facet>
+                            <h:outputText value="#{stockBean.getStockinStore(adminBean.st.storeID, pr.id)}" />
+                        </h:column>
+                        <h:column>
+                            <h:commandLink type="submit" 
+                                             value="Edit Price" 
+                                             action="#{productBean.editProduct(pr)}" 
+                                             class="btn-small orange accent-3"> 
+                                <f:param name="action" value="#{pr.id}" />
+
+                            </h:commandLink>
+                        </h:column>
+
+                        <h:column>
+                            <h:commandLink 
+                                             value="Update Stock" 
+                                             action="#{stockBean.editQuantityStock(pr)}" 
+                                             class="btn-small amber darken-3 btn-small"> 
+                                
+
+                            </h:commandLink>
+                        </h:column>
+                        <h:column>
+                            <h:commandLink type="submit" 
+                                             value="Delete Product" 
+                                             action="#{stockBean.deleteProductsInStores(pr)}"
+                                             class="btn-small red darken-4"> 
+
+                            </h:commandLink>
+                        </h:column>
+
+                    </h:dataTable>
+                    
+
+                    <h:commandLink value="Add Product" action="/admin/AddProduct.xhtml?faces-redirect=true" 
+                                   class="btn-small light-blue accent-4">
+                        
+                    </h:commandLink>
+                </h:form>
+
+            </ui:define>
+
+
+
+        </ui:composition>
+
+    </body>
+</html>

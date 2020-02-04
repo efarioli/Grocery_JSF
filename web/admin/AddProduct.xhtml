@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Add Product</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/template/common/adminLayout.xhtml">
+
+            <ui:define name="content">
+                <h:form>
+                    <div class="row">
+                        <div class="input-field col s8 offset-s2">
+                            <h3>Add Product</h3>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s8 offset-s2">
+                            <h:outputLabel for="description" value="Description: " />
+                            <h:inputText id="description" value="#{productBean.description}" 
+                                         required="true"
+                                         requiredMessage="Please enter a description" 
+                                         validatorMessage="The description must be between 3 and 50 charaters inclusive">
+                                <f:validateLength minimum="3" maximum="50"/>
+
+                            </h:inputText>
+
+                            <h:message for="description" class="errormessagebb animated lightSpeedOut" />
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="input-field col s8 offset-s2">
+                            <h:outputLabel for="imgurl" value="Image Url:" />
+                            <h:inputText id="imgurl" value="#{productBean.imgURL}"                                    
+                                         required="true"
+                                         requiredMessage="Please enter a Image url" 
+                                         validatorMessage="The image url must be between 3 and 200 charaters inclusive">
+                                <f:validateLength minimum="3" maximum="200"/>
+                            </h:inputText>
+                            <h:message for="imgurl" class="errormessagebb animated lightSpeedOut" />
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="input-field col s8 offset-s2">
+                            <h:outputLabel for="price" value="Price:" />
+                            <h:inputText id="price" value="#{productBean.price}" 
+                                         required="true"
+                                         requiredMessage="Please enter the price" 
+                                         validatorMessage="The number must be at least 0.01">
+                                <f:validateDoubleRange minimum="0.01" />
+                            </h:inputText>
+                            <h:message for="price" class="errormessagebb animated lightSpeedOut" />
+                        </div>
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="input-field col s8 offset-s2">
+                            <h:link value="Cancel" outcome="ViewAllProducts" class="waves-effect waves-light btn-large blue accent-1"/>
+
+                            <h:commandLink value="Add" action="#{productBean.addProduct()}" 
+                                           class="btn-large right">
+                            </h:commandLink>
+                        </div>
+                    </div>
+                </h:form>
+            </ui:define>
+
+
+
+        </ui:composition>
+    </h:body>
+</html>
+
